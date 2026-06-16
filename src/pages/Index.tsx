@@ -5,12 +5,21 @@ import { Button } from '@/components/ui/button';
 import BeforeAfter from '@/components/BeforeAfter';
 
 const LOGO = 'https://cdn.poehali.dev/projects/63c104c1-e97a-4e0f-bd69-7f7c0038aeec/bucket/f6ff109a-5ca0-4a8f-a5c9-03907212d06f.jpg';
-const DOCTOR_IMG = 'https://cdn.poehali.dev/projects/63c104c1-e97a-4e0f-bd69-7f7c0038aeec/files/b5f93af1-180e-4be0-adf7-6758837a4979.jpg';
 
-const IMG = {
-  morsh: 'https://cdn.poehali.dev/projects/63c104c1-e97a-4e0f-bd69-7f7c0038aeec/files/f725ae11-e803-45d8-b941-313933007b58.jpg',
-  oval: 'https://cdn.poehali.dev/projects/63c104c1-e97a-4e0f-bd69-7f7c0038aeec/files/8ac0838b-b371-4105-8873-9798b878579a.jpg',
-  skin: 'https://cdn.poehali.dev/projects/63c104c1-e97a-4e0f-bd69-7f7c0038aeec/files/2ae91e58-a407-48bd-ae5b-5967268cc00a.jpg',
+const PHOTOS = {
+  hero1: 'https://cdn.poehali.dev/projects/63c104c1-e97a-4e0f-bd69-7f7c0038aeec/bucket/463ee772-51e0-483c-8d25-4bd969b01cdd.jpg',
+  hero2: 'https://cdn.poehali.dev/projects/63c104c1-e97a-4e0f-bd69-7f7c0038aeec/bucket/6d0dd182-b414-404c-81d3-2652d88d2021.jpg',
+  hero3: 'https://cdn.poehali.dev/projects/63c104c1-e97a-4e0f-bd69-7f7c0038aeec/bucket/5b97fc98-a2d2-4076-8254-5e25888e9755.jpg',
+  hero4: 'https://cdn.poehali.dev/projects/63c104c1-e97a-4e0f-bd69-7f7c0038aeec/bucket/0e841e1b-b516-4d08-a0da-20b770af80e0.jpg',
+  skull: 'https://cdn.poehali.dev/projects/63c104c1-e97a-4e0f-bd69-7f7c0038aeec/bucket/649b3ed8-9982-4689-9a4b-ebde6d6d8ca1.jpg',
+  morsh: 'https://cdn.poehali.dev/projects/63c104c1-e97a-4e0f-bd69-7f7c0038aeec/files/400bb14e-6320-40b6-ba81-3852fd14a39a.jpg',
+  oval: 'https://cdn.poehali.dev/projects/63c104c1-e97a-4e0f-bd69-7f7c0038aeec/files/87f0a053-e545-4491-ac8b-a0d0be27be04.jpg',
+  skin: 'https://cdn.poehali.dev/projects/63c104c1-e97a-4e0f-bd69-7f7c0038aeec/files/7ab3445f-4246-4baf-95e3-e957fbdbd06d.jpg',
+  pigment: 'https://cdn.poehali.dev/projects/63c104c1-e97a-4e0f-bd69-7f7c0038aeec/files/b4afee88-bc60-402a-ba22-16621062cfbd.jpg',
+  couperose: 'https://cdn.poehali.dev/projects/63c104c1-e97a-4e0f-bd69-7f7c0038aeec/files/0d4ce58b-22df-480b-8a11-7483a316d0dd.jpg',
+  acne: 'https://cdn.poehali.dev/projects/63c104c1-e97a-4e0f-bd69-7f7c0038aeec/files/84bd4430-45a7-4a71-bae3-48bd7b87c416.jpg',
+  hair: 'https://cdn.poehali.dev/projects/63c104c1-e97a-4e0f-bd69-7f7c0038aeec/files/3775f7eb-e385-46e2-9ab8-a04554da5fc1.jpg',
+  lips: 'https://cdn.poehali.dev/projects/63c104c1-e97a-4e0f-bd69-7f7c0038aeec/files/cc47ca9b-548a-4e39-b254-b1eb47328b55.jpg',
   smas: 'https://cdn.poehali.dev/projects/63c104c1-e97a-4e0f-bd69-7f7c0038aeec/files/fec830c8-b6bd-4781-bb12-44e8d6c162e6.jpg',
   inj: 'https://cdn.poehali.dev/projects/63c104c1-e97a-4e0f-bd69-7f7c0038aeec/files/eaacd0b5-3753-49e5-92bd-40e796a394f4.jpg',
   photo: 'https://cdn.poehali.dev/projects/63c104c1-e97a-4e0f-bd69-7f7c0038aeec/files/ae622c83-170a-4c5f-a9fa-b81ae94bfdbb.jpg',
@@ -27,13 +36,6 @@ const navLinks = [
   { label: 'Контакты', id: 'contacts' },
 ];
 
-const heroStats = [
-  { icon: 'GraduationCap', value: '15+ лет', label: 'практики' },
-  { icon: 'Users', value: '3000+', label: 'довольных пациентов' },
-  { icon: 'Award', value: 'Кандидат', label: 'медицинских наук' },
-  { icon: 'Leaf', value: 'Авторские', label: 'протоколы омоложения' },
-];
-
 const philosophy = [
   { icon: 'Microscope', title: 'Диагностика', text: 'Сначала определяем истинные причины возрастных изменений и проблем кожи.' },
   { icon: 'Stethoscope', title: 'Медицинский подход', text: 'Каждая рекомендация основана на состоянии вашего организма.' },
@@ -44,30 +46,31 @@ const philosophy = [
 ];
 
 const directions = [
-  { t: 'Морщины и тонкие линии', img: IMG.morsh },
-  { t: 'Потеря овала лица', img: IMG.oval },
-  { t: 'Второй подбородок', img: IMG.skin },
-  { t: 'Пигментация и неровный тон', img: IMG.morsh },
-  { t: 'Купероз и сосуды', img: IMG.oval },
-  { t: 'Акне и постакне', img: IMG.skin },
-  { t: 'Выпадение волос', img: IMG.morsh },
-  { t: 'Интимное омоложение', img: IMG.skin },
-  { t: 'Коррекция губ и контуров лица', img: IMG.oval },
+  { t: 'Морщины и возрастные изменения', img: PHOTOS.morsh },
+  { t: 'Потеря овала лица', img: PHOTOS.oval },
+  { t: 'Акне', img: PHOTOS.acne },
+  { t: 'Постуре фигуры', img: PHOTOS.skin },
+  { t: 'Пигментация', img: PHOTOS.pigment },
+  { t: 'Купероз и сосуды', img: PHOTOS.couperose },
+  { t: 'Отёчность и мешки', img: PHOTOS.morsh },
+  { t: 'Выпадение волос', img: PHOTOS.hair },
+  { t: 'Коррекция губ и контуров', img: PHOTOS.lips },
+  { t: 'Интимное здоровье', img: PHOTOS.skin },
 ];
 
 const procedures = [
-  { name: 'SMAS-лифтинг Doublo', price: 'от 12 000 ₽ – 60 000 ₽', img: IMG.smas, text: 'Ультразвуковая подтяжка кожи без операции. Чёткий овал лица, лифтинг и уплотнение тканей.' },
-  { name: 'RF-лифтинг Vivace Secret RF', price: 'от 14 000 ₽ – 33 000 ₽', img: IMG.inj, text: 'Микроигольчатый RF-лифтинг для уплотнения кожи, сужения пор и стимуляции коллагена.' },
-  { name: 'Фотоомоложение Lumenis M22', price: 'от 7 000 ₽ – 22 000 ₽', img: IMG.photo, text: 'Устранение пигментации, сосудов, покраснений. Выравнивание тона и улучшение качества кожи.' },
-  { name: 'Биоревитализация', price: 'от 8 000 ₽ – 34 000 ₽', img: IMG.inj, text: 'Глубокое увлажнение, повышение упругости и тонуса кожи, сияние и здоровый вид.' },
-  { name: 'Скульптурирование филлерами', price: 'от 10 500 ₽ – 45 000 ₽', img: IMG.inj, text: 'Коррекция объёмов, скул, подбородка и контуров лица. Гармонизация и естественный результат.' },
-  { name: 'Ботулинотерапия', price: 'от 1 500 ₽ – 54 000 ₽', img: IMG.smas, text: 'Разглаживание мимических морщин, профилактика возрастных изменений, коррекция гипергидроза.' },
+  { name: 'SMAS-лифтинг Doublo', price: 'от 12 000 ₽ – 60 000 ₽', img: PHOTOS.smas, text: 'Ультразвуковая подтяжка кожи без операции. Чёткий овал лица, лифтинг и уплотнение тканей.' },
+  { name: 'RF-лифтинг Vivace Secret RF', price: 'от 14 000 ₽ – 33 000 ₽', img: PHOTOS.inj, text: 'Микроигольчатый RF-лифтинг для уплотнения кожи, сужения пор и стимуляции коллагена.' },
+  { name: 'Фотоомоложение Lumenis M22', price: 'от 7 000 ₽ – 22 000 ₽', img: PHOTOS.photo, text: 'Устранение пигментации, сосудов, покраснений. Выравнивание тона и улучшение качества кожи.' },
+  { name: 'Биоревитализация', price: 'от 8 000 ₽ – 34 000 ₽', img: PHOTOS.inj, text: 'Глубокое увлажнение, повышение упругости и тонуса кожи, сияние и здоровый вид.' },
+  { name: 'Скульптурирование филлерами', price: 'от 10 500 ₽ – 45 000 ₽', img: PHOTOS.inj, text: 'Коррекция объёмов, скул, подбородка и контуров лица. Гармонизация и естественный результат.' },
+  { name: 'Ботулинотерапия', price: 'от 1 500 ₽ – 54 000 ₽', img: PHOTOS.smas, text: 'Разглаживание мимических морщин, профилактика возрастных изменений, коррекция гипергидроза.' },
 ];
 
 const cases = [
-  { age: '45 лет', before: IMG.morsh, after: IMG.oval, problem: 'потеря чёткости овала лица, снижение упругости кожи', proc: 'SMAS-лифтинг Doublo + биоревитализация', term: '3 месяца' },
-  { age: '39 лет', before: IMG.oval, after: IMG.skin, problem: 'пигментация, неровный тон кожи', proc: 'фотоомоложение Lumenis M22 + мезотерапия', term: '1 месяц' },
-  { age: '42 года', before: IMG.skin, after: IMG.morsh, problem: 'морщины в области лба и глаз', proc: 'ботулинотерапия + биоревитализация', term: '14 дней' },
+  { age: '45 лет', before: PHOTOS.morsh, after: PHOTOS.oval, problem: 'потеря чёткости овала лица, снижение упругости кожи', proc: 'SMAS-лифтинг Doublo + биоревитализация', term: '3 месяца' },
+  { age: '39 лет', before: PHOTOS.pigment, after: PHOTOS.skin, problem: 'пигментация, неровный тон кожи', proc: 'фотоомоложение Lumenis M22 + мезотерапия', term: '1 месяц' },
+  { age: '42 года', before: PHOTOS.couperose, after: PHOTOS.morsh, problem: 'морщины в области лба и глаз', proc: 'ботулинотерапия + биоревитализация', term: '14 дней' },
 ];
 
 const doctorNumbers = [
@@ -146,55 +149,73 @@ const Index = () => {
       {/* MOBILE MENU */}
       {menuOpen && (
         <div className="fixed inset-0 z-50 bg-cream flex flex-col p-6 animate-fade-in xl:hidden">
-          <div className="flex items-center justify-between mb-10">
+          <div className="flex items-center justify-between mb-6">
             <Logo />
             <button onClick={() => setMenuOpen(false)} className="w-11 h-11 flex items-center justify-center"><Icon name="X" size={28} /></button>
           </div>
-          <nav className="flex flex-col gap-5 text-2xl font-display">
+          <Button onClick={() => scrollTo('booking')} className="w-full bg-primary hover:bg-gold text-primary-foreground rounded-md h-12 mb-6">
+            <Icon name="Calendar" size={18} className="mr-2" /> Записаться на консультацию
+          </Button>
+          <nav className="flex flex-col gap-4 text-xl font-display">
             {navLinks.map((l) => (
-              <button key={l.id} onClick={() => scrollTo(l.id)} className="text-left hover:text-gold transition-colors">{l.label}</button>
+              <button key={l.id} onClick={() => scrollTo(l.id)} className="text-left hover:text-gold transition-colors border-b border-border pb-4">{l.label}</button>
             ))}
           </nav>
-          <div className="mt-auto space-y-4">
+          <div className="mt-auto space-y-1">
             <a href="tel:+79789049640" className="block font-semibold text-lg text-gold">+7 978 904-96-40</a>
-            <Button onClick={() => scrollTo('booking')} className="w-full bg-primary hover:bg-gold text-primary-foreground rounded-md h-12">Записаться на консультацию</Button>
+            <p className="text-sm text-muted-foreground">Севастополь, пр. Античный, 4, оф. 28</p>
           </div>
         </div>
       )}
 
-      {/* HERO */}
-      <section id="about" className="pt-20 bg-cream">
-        <div className="max-w-[1400px] mx-auto px-6 grid lg:grid-cols-2 gap-8 items-center min-h-[90vh] py-10">
-          <div className="animate-fade-in">
-            <p className="text-xs tracking-[0.25em] uppercase text-gold mb-6">Косметология экспертного уровня</p>
-            <h1 className="font-display text-5xl md:text-6xl leading-[1.05] mb-6">
-              Красота начинается<br />не с процедуры.<br />
-              <span className="text-gold">Красота начинается<br />с диагностики.</span>
-            </h1>
-            <p className="text-muted-foreground text-lg max-w-md mb-8">Персональная стратегия омоложения на основе диагностики, анализа состояния кожи и медицинского подхода.</p>
-            <div className="flex flex-wrap gap-4 mb-10">
-              <Button onClick={() => scrollTo('booking')} className="bg-primary hover:bg-gold text-primary-foreground rounded-md h-12 px-7">Записаться на консультацию</Button>
-              <Button variant="outline" onClick={() => scrollTo('doctor')} className="rounded-md h-12 px-7 border-foreground/20"><Icon name="Play" size={16} className="mr-2" /> Смотреть видео</Button>
-            </div>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-5 max-w-xl">
-              {heroStats.map((s) => (
-                <div key={s.label} className="flex flex-col gap-2">
-                  <Icon name={s.icon} size={26} className="text-gold" />
-                  <div className="font-semibold text-sm">{s.value}</div>
-                  <div className="text-xs text-muted-foreground leading-tight">{s.label}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="relative">
-            <img src={DOCTOR_IMG} alt="Лариса Леонидовна Воловик" className="w-full rounded-2xl object-cover shadow-xl" />
-            <div className="absolute bottom-6 right-6 bg-cream/95 backdrop-blur rounded-xl p-5 max-w-[230px] shadow-lg border border-border">
-              <p className="font-display text-xl font-semibold mb-3">Лариса Леонидовна Воловик</p>
-              <ul className="space-y-1.5 text-xs text-muted-foreground">
-                {['Кандидат медицинских наук', 'Врач-косметолог', 'Дерматолог', 'Геронтолог', 'Anti-Age эксперт'].map((i) => (
-                  <li key={i} className="flex items-center gap-2"><Icon name="ChevronRight" size={12} className="text-gold" />{i}</li>
+      {/* HERO — по скриншоту 1:1 */}
+      <section id="about" className="pt-20 bg-cream overflow-hidden">
+        <div className="max-w-[1400px] mx-auto px-6 py-10 lg:py-0">
+          <div className="grid lg:grid-cols-[1fr_1fr] min-h-[88vh] gap-0">
+            {/* LEFT */}
+            <div className="flex flex-col justify-center py-10 lg:pr-12">
+              <p className="text-xs tracking-[0.25em] uppercase text-gold mb-5">Косметология экспертного уровня</p>
+              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.05] mb-5">
+                Красота начинается<br />не с процедуры.<br />
+                <span className="text-gold">Красота начинается<br />с диагноза.</span>
+              </h1>
+              <p className="text-muted-foreground text-base md:text-lg max-w-md mb-4">
+                Врач-косметолог, дерматолог, геронтолог, кандидат медицинских наук. Лариса Воловик подберёт персональную стратегию омоложения и здорового долголетия именно для вас.
+              </p>
+              <div className="flex flex-wrap gap-4 mb-8">
+                <Button onClick={() => scrollTo('booking')} className="bg-primary hover:bg-gold text-primary-foreground rounded-md h-12 px-7">Записаться на консультацию</Button>
+                <Button variant="outline" onClick={() => scrollTo('doctor')} className="rounded-md h-12 px-7 border-foreground/20 gap-2">
+                  <Icon name="Play" size={16} /> Смотреть видео
+                </Button>
+              </div>
+              <div className="grid grid-cols-3 gap-5 max-w-lg border-t border-border pt-6">
+                {[
+                  { icon: 'Award', v: 'Кандидат медицинских наук' },
+                  { icon: 'TrendingUp', v: '15+ лет в эстетической медицине' },
+                  { icon: 'Target', v: 'Индивидуальный подход и честные рекомендации' },
+                ].map((s) => (
+                  <div key={s.v} className="flex flex-col gap-2">
+                    <Icon name={s.icon} size={24} className="text-gold" />
+                    <div className="text-xs text-muted-foreground leading-tight">{s.v}</div>
+                  </div>
                 ))}
-              </ul>
+              </div>
+            </div>
+            {/* RIGHT: photo grid like screenshot */}
+            <div className="hidden lg:grid grid-cols-2 grid-rows-2 gap-3 py-6 h-[88vh]">
+              <div className="row-span-2 rounded-xl overflow-hidden">
+                <img src={PHOTOS.hero1} alt="Лариса Воловик" className="w-full h-full object-cover object-top" />
+              </div>
+              <div className="rounded-xl overflow-hidden">
+                <img src={PHOTOS.hero2} alt="Врач с препаратами" className="w-full h-full object-cover object-top" />
+              </div>
+              <div className="rounded-xl overflow-hidden">
+                <img src={PHOTOS.hero3} alt="В клинике" className="w-full h-full object-cover object-top" />
+              </div>
+            </div>
+            {/* Mobile single photo */}
+            <div className="lg:hidden rounded-xl overflow-hidden mb-4 h-72">
+              <img src={PHOTOS.hero1} alt="Лариса Воловик" className="w-full h-full object-cover object-top" />
             </div>
           </div>
         </div>
@@ -220,23 +241,86 @@ const Index = () => {
         </div>
       </section>
 
+      {/* DOCTOR */}
+      <section id="doctor" className="py-24 bg-foreground text-cream relative overflow-hidden">
+        <div className="max-w-[1400px] mx-auto px-6 grid lg:grid-cols-[0.7fr_1.3fr] gap-12 items-center">
+          <div className="relative">
+            <img src={PHOTOS.skull} alt="Лариса Леонидовна Воловик" className="rounded-2xl object-cover w-full shadow-2xl" />
+            <div className="absolute bottom-4 left-4 bg-cream/95 rounded-lg px-4 py-2 text-sm text-foreground font-semibold">Доктор, которому доверяют лицо</div>
+          </div>
+          <div>
+            <p className="text-xs tracking-[0.25em] uppercase text-gold mb-3">06 — Ваш врач</p>
+            <h2 className="font-display text-4xl md:text-5xl mb-1">Воловик</h2>
+            <h2 className="font-display text-4xl md:text-5xl mb-4">Лариса Леонидовна</h2>
+            <div className="grid sm:grid-cols-2 gap-2 mb-6">
+              {['Кандидат медицинских наук', 'Врач-косметолог', 'Дерматолог', 'Геронтолог', 'Anti-Age expert', 'Спикер профессиональных конференций'].map((c) => (
+                <div key={c} className="flex items-center gap-2 text-sm text-cream/80"><Icon name="ChevronRight" size={14} className="text-gold" />{c}</div>
+              ))}
+            </div>
+            <div className="bg-cream/5 border border-cream/10 rounded-xl p-6 max-w-lg mb-8">
+              <Icon name="Quote" size={26} className="text-gold mb-2" />
+              <p className="text-cream/90 italic">Моя задача не изменить вас. Моя задача — сохранить вашу индивидуальность и сделать лучшую версию себя.</p>
+              <p className="font-hand text-2xl text-gold mt-3">Л. Л. Воловик</p>
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mb-10">
+              {doctorNumbers.map((n) => (
+                <div key={n.label}>
+                  <Icon name={n.icon} size={26} className="text-gold mb-2" />
+                  <div className="font-display text-3xl">{n.value}</div>
+                  <div className="text-xs text-cream/60">{n.label}</div>
+                </div>
+              ))}
+            </div>
+            <div className="flex flex-wrap gap-3">
+              <Button onClick={() => scrollTo('booking')} className="bg-gold hover:bg-primary text-primary-foreground rounded-md h-12 px-8">Записаться на консультацию</Button>
+              <Button variant="outline" className="rounded-md h-12 px-6 border-cream/20 text-cream hover:bg-cream/10 gap-2">
+                <Icon name="Play" size={16} /> Видеообращение врача
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* APPROACH STEPS */}
+      <section className="py-20 bg-background">
+        <div className="max-w-[1400px] mx-auto px-6 text-center">
+          <h2 className="font-display text-4xl md:text-5xl mb-12">Наш подход — ваша уверенность</h2>
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            {[
+              { icon: 'MessageSquare', t: 'Консультация', s: 'Подробный разговор и осмотр' },
+              { icon: 'FlaskConical', t: 'Анализы', s: 'Диагностика прямо в клинике' },
+              { icon: 'Search', t: 'Диагностика', s: 'Оценка состояния кожи, здоровья и образа жизни' },
+              { icon: 'FileText', t: 'Персональный план', s: 'Стратегия омоложения именно для вас' },
+              { icon: 'Syringe', t: 'Процедуры', s: 'Только то, что нужно и будет эффективно' },
+              { icon: 'BarChart2', t: 'Контроль результата', s: 'Мы рядом не разовая встреча' },
+            ].map((s, i, arr) => (
+              <div key={s.t} className="flex items-center gap-4">
+                <div className="flex flex-col items-center gap-2 max-w-[120px] text-center">
+                  <div className="w-16 h-16 rounded-full border-2 border-gold/30 flex items-center justify-center text-gold"><Icon name={s.icon} size={24} /></div>
+                  <div className="font-semibold text-sm">{s.t}</div>
+                  <div className="text-xs text-muted-foreground leading-tight">{s.s}</div>
+                </div>
+                {i < arr.length - 1 && <Icon name="ArrowRight" size={20} className="text-gold/40 shrink-0 hidden sm:block" />}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* DIRECTIONS */}
       <section id="directions" className="py-24 bg-cream">
         <div className="max-w-[1400px] mx-auto px-6">
           <p className="text-xs tracking-[0.25em] uppercase text-gold mb-3">03 — Направления косметологии</p>
-          <h2 className="font-display text-4xl md:text-5xl mb-4 max-w-2xl">Какая задача беспокоит вас сегодня?</h2>
-          <p className="text-muted-foreground mb-12 max-w-md">Выберите направление и получите персональные рекомендации врача.</p>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {directions.map((d, i) => (
-              <button key={d.t} onClick={() => scrollTo('booking')} className="group relative overflow-hidden bg-card rounded-xl border border-border text-left hover:border-gold hover:shadow-lg transition-all flex">
-                <div className="p-6 flex flex-col justify-between flex-1">
-                  <span className="font-display text-2xl text-gold/70">0{i + 1}</span>
-                  <div>
-                    <p className="font-medium text-lg mt-2 mb-4">{d.t}</p>
-                    <span className="w-9 h-9 rounded-full border border-gold/50 flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-primary-foreground transition-colors"><Icon name="ArrowRight" size={16} /></span>
-                  </div>
+          <h2 className="font-display text-4xl md:text-5xl mb-3">Что вас беспокоит?</h2>
+          <p className="text-muted-foreground mb-10">Выберите направление, чтобы узнать о решениях</p>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+            {directions.map((d) => (
+              <button key={d.t} onClick={() => scrollTo('booking')} className="group relative overflow-hidden rounded-xl aspect-[3/4] text-left">
+                <img src={d.img} alt={d.t} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                <div className="absolute bottom-0 inset-x-0 p-4">
+                  <p className="text-white font-medium text-sm leading-tight">{d.t}</p>
                 </div>
-                <img src={d.img} alt={d.t} className="w-28 sm:w-32 object-cover group-hover:scale-105 transition-transform duration-500" />
               </button>
             ))}
           </div>
@@ -252,12 +336,12 @@ const Index = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {procedures.map((p) => (
               <div key={p.name} className="bg-card rounded-xl border border-border hover:shadow-lg transition-shadow flex flex-col overflow-hidden">
-                <img src={p.img} alt={p.name} className="w-full h-52 object-cover" />
-                <div className="p-7 flex flex-col flex-1">
-                  <h3 className="font-display text-2xl mb-3">{p.name}</h3>
-                  <div className="w-10 h-px bg-gold mb-3" />
-                  <p className="text-gold font-semibold mb-4">{p.price}</p>
-                  <p className="text-sm text-muted-foreground leading-relaxed mb-6 flex-1">{p.text}</p>
+                <img src={p.img} alt={p.name} className="w-full h-48 object-cover" />
+                <div className="p-6 flex flex-col flex-1">
+                  <h3 className="font-display text-2xl mb-2">{p.name}</h3>
+                  <div className="w-10 h-px bg-gold mb-2" />
+                  <p className="text-gold font-semibold mb-3">{p.price}</p>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-5 flex-1">{p.text}</p>
                   <Button variant="outline" onClick={() => scrollTo('booking')} className="rounded-md border-gold/40 text-foreground hover:bg-gold hover:text-primary-foreground w-fit">Подробнее</Button>
                 </div>
               </div>
@@ -269,57 +353,32 @@ const Index = () => {
         </div>
       </section>
 
-      {/* RESULTS / BEFORE-AFTER */}
+      {/* RESULTS / BEFORE-AFTER — компактный, с тремя карточками рядом */}
       <section id="results" className="py-24 bg-cream">
-        <div className="max-w-[1400px] mx-auto px-6 grid lg:grid-cols-[1fr_1.4fr] gap-12 items-center">
-          <div>
-            <p className="text-xs tracking-[0.25em] uppercase text-gold mb-3">05 — Результаты наших пациентов</p>
-            <h2 className="font-display text-4xl md:text-5xl mb-5">Естественные изменения без эффекта «переколотого лица»</h2>
-            <p className="text-muted-foreground mb-8">Мы работаем с причиной возрастных изменений и добиваемся натурального результата. Потяните ползунок, чтобы увидеть результат.</p>
-            <div className="flex gap-3">
-              <button onClick={() => setActiveCase((activeCase + cases.length - 1) % cases.length)} className="w-12 h-12 rounded-full border border-foreground/20 flex items-center justify-center hover:bg-gold hover:text-primary-foreground transition-colors"><Icon name="ArrowLeft" size={18} /></button>
-              <button onClick={() => setActiveCase((activeCase + 1) % cases.length)} className="w-12 h-12 rounded-full border border-foreground/20 flex items-center justify-center hover:bg-gold hover:text-primary-foreground transition-colors"><Icon name="ArrowRight" size={18} /></button>
+        <div className="max-w-[1400px] mx-auto px-6">
+          <div className="grid lg:grid-cols-[1fr_2fr] gap-10 items-start">
+            <div>
+              <p className="text-xs tracking-[0.25em] uppercase text-gold mb-3">05 — Результаты наших пациентов</p>
+              <h2 className="font-display text-4xl md:text-5xl mb-5">Естественные изменения без эффекта «переколотого лица»</h2>
+              <p className="text-muted-foreground mb-6">Потяните ползунок на фото — сравните результат. Мы работаем с причиной возрастных изменений и добиваемся натурального результата.</p>
+              <div className="flex gap-3 mb-4">
+                <button onClick={() => setActiveCase((activeCase + cases.length - 1) % cases.length)} className="w-12 h-12 rounded-full border border-foreground/20 flex items-center justify-center hover:bg-gold hover:text-primary-foreground transition-colors"><Icon name="ArrowLeft" size={18} /></button>
+                <button onClick={() => setActiveCase((activeCase + 1) % cases.length)} className="w-12 h-12 rounded-full border border-foreground/20 flex items-center justify-center hover:bg-gold hover:text-primary-foreground transition-colors"><Icon name="ArrowRight" size={18} /></button>
+              </div>
+              <p className="text-xs text-muted-foreground">* Результаты индивидуальны и могут отличаться</p>
             </div>
-            <p className="mt-8 text-xs text-muted-foreground">* Результаты индивидуальны и могут отличаться</p>
-          </div>
-          <div className="bg-card rounded-xl border border-border p-6 shadow-lg">
-            <BeforeAfter before={cases[activeCase].before} after={cases[activeCase].after} />
-            <div className="mt-6 space-y-2">
-              <p className="text-gold font-semibold text-lg">{cases[activeCase].age}</p>
-              <p className="text-sm"><span className="text-muted-foreground">Проблема:</span> {cases[activeCase].problem}</p>
-              <p className="text-sm"><span className="text-muted-foreground">Процедуры:</span> {cases[activeCase].proc}</p>
-              <p className="text-sm"><span className="text-muted-foreground">Срок результата:</span> {cases[activeCase].term}</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* DOCTOR */}
-      <section id="doctor" className="py-24 bg-foreground text-cream relative overflow-hidden">
-        <div className="max-w-[1400px] mx-auto px-6 grid lg:grid-cols-[0.8fr_1.2fr] gap-12 items-center">
-          <img src={DOCTOR_IMG} alt="Лариса Леонидовна Воловик" className="rounded-2xl object-cover w-full shadow-2xl" />
-          <div>
-            <p className="text-xs tracking-[0.25em] uppercase text-gold mb-3">06 — Ваш врач</p>
-            <h2 className="font-display text-4xl md:text-5xl mb-3">Ваш врач на каждом этапе лечения</h2>
-            <p className="font-display text-3xl text-gold mb-4">Лариса Леонидовна Воловик</p>
-            <p className="text-cream/80 mb-2">Кандидат медицинских наук</p>
-            <p className="text-cream/80 mb-6">Врач-косметолог | Дерматолог | Геронтолог | Anti-Age эксперт</p>
-            <p className="text-cream/70 max-w-lg mb-8 leading-relaxed">Более 15 лет помогаю пациентам сохранять естественную красоту и продлевать молодость с помощью современных научных методов и передовых технологий.</p>
-            <div className="bg-cream/5 border border-cream/10 rounded-xl p-6 max-w-lg mb-8">
-              <Icon name="Quote" size={26} className="text-gold mb-2" />
-              <p className="text-cream/90 italic">Я не просто выполняю процедуры. Я анализирую причины изменений и создаю индивидуальный план, который даёт естественный и стойкий результат.</p>
-              <p className="font-hand text-2xl text-gold mt-3">Л. Л. Воловик</p>
-            </div>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mb-10">
-              {doctorNumbers.map((n) => (
-                <div key={n.label}>
-                  <Icon name={n.icon} size={26} className="text-gold mb-2" />
-                  <div className="font-display text-3xl">{n.value}</div>
-                  <div className="text-xs text-cream/60">{n.label}</div>
+            <div className="grid sm:grid-cols-3 gap-4">
+              {cases.map((c, i) => (
+                <div key={i} onClick={() => setActiveCase(i)} className={`cursor-pointer rounded-xl overflow-hidden border-2 transition-all ${activeCase === i ? 'border-gold shadow-lg' : 'border-transparent'}`}>
+                  <BeforeAfter before={c.before} after={c.after} />
+                  <div className="bg-card p-3">
+                    <p className="text-gold font-semibold text-sm">{c.age}</p>
+                    <p className="text-xs text-muted-foreground mt-1">{c.problem}</p>
+                    <p className="text-xs mt-1"><span className="text-muted-foreground">Срок:</span> {c.term}</p>
+                  </div>
                 </div>
               ))}
             </div>
-            <Button onClick={() => scrollTo('booking')} className="bg-gold hover:bg-primary text-primary-foreground rounded-md h-12 px-8">Записаться на консультацию</Button>
           </div>
         </div>
       </section>
@@ -423,8 +482,9 @@ const Index = () => {
           <button onClick={() => navigate('/admin')} className="flex items-center gap-2 px-4 py-2 rounded-full border border-cream/20 hover:border-gold hover:text-gold transition-colors">
             <Icon name="Lock" size={14} /> Вход в админку
           </button>
-          <a href="https://мастерскаягорбунова.рф" target="_blank" rel="noreferrer" className="hover:text-gold transition-colors">мастерскаягорбунова.рф</a>
-          <p>© 2026 Студия Красивых Людей. Разработано в Мастерской Горбунова.</p>
+          <p>© 2026 Студия Красивых Людей. Разработано в{' '}
+            <a href="https://мастерскаягорбунова.рф" target="_blank" rel="noreferrer" className="underline hover:text-gold transition-colors">Мастерской Горбунова</a>.
+          </p>
         </div>
       </footer>
 
@@ -433,7 +493,7 @@ const Index = () => {
         <Icon name="Calendar" size={18} /> <span className="hidden sm:inline">Записаться</span>
       </button>
       {scrolled && (
-        <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="fixed bottom-24 right-6 z-30 w-12 h-12 rounded-full bg-cream border border-border shadow-lg flex items-center justify-center text-foreground hover:bg-gold hover:text-primary-foreground transition-colors animate-fade-in" aria-label="Наверх">
+        <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="fixed bottom-24 right-6 z-30 w-12 h-12 rounded-full bg-cream border border-border shadow-lg flex items-center justify-center text-foreground hover:bg-gold hover:text-primary-foreground transition-colors animate-fade-in">
           <Icon name="ChevronUp" size={22} />
         </button>
       )}

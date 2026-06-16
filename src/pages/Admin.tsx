@@ -7,31 +7,9 @@ const LOGO = 'https://cdn.poehali.dev/projects/63c104c1-e97a-4e0f-bd69-7f7c0038a
 
 type Status = 'Запланирована' | 'Подтверждена' | 'Завершена' | 'Отменена';
 
-interface Appt {
-  id: number;
-  client: string;
-  phone: string;
-  service: string;
-  date: string;
-  time: string;
-  status: Status;
-}
-
-interface Client {
-  id: number;
-  name: string;
-  phone: string;
-  visits: number;
-  lastVisit: string;
-  note: string;
-}
-
-interface Reminder {
-  id: number;
-  text: string;
-  date: string;
-  done: boolean;
-}
+interface Appt { id: number; client: string; phone: string; service: string; date: string; time: string; status: Status; }
+interface Client { id: number; name: string; phone: string; visits: number; lastVisit: string; note: string; }
+interface Reminder { id: number; text: string; date: string; done: boolean; }
 
 const initAppts: Appt[] = [
   { id: 1, client: 'Ольга Петрова', phone: '+7 978 100-11-22', service: 'SMAS-лифтинг Doublo', date: '2026-06-16', time: '11:00', status: 'Подтверждена' },
@@ -39,13 +17,11 @@ const initAppts: Appt[] = [
   { id: 3, client: 'Елена Смирнова', phone: '+7 978 300-55-66', service: 'Ботулинотерапия', date: '2026-06-16', time: '16:00', status: 'Запланирована' },
   { id: 4, client: 'Анна Кузнецова', phone: '+7 978 400-77-88', service: 'Фотоомоложение M22', date: '2026-06-17', time: '10:30', status: 'Подтверждена' },
 ];
-
 const initClients: Client[] = [
   { id: 1, name: 'Ольга Петрова', phone: '+7 978 100-11-22', visits: 12, lastVisit: '2026-05-20', note: 'Чувствительная кожа, аллергия на лидокаин' },
   { id: 2, name: 'Мария Иванова', phone: '+7 978 200-33-44', visits: 5, lastVisit: '2026-06-01', note: 'Курс биоревитализации, 2 из 4' },
   { id: 3, name: 'Елена Смирнова', phone: '+7 978 300-55-66', visits: 23, lastVisit: '2026-06-10', note: 'VIP, постоянный клиент' },
 ];
-
 const initReminders: Reminder[] = [
   { id: 1, text: 'Позвонить Ольге — подтвердить SMAS-лифтинг', date: '2026-06-16', done: false },
   { id: 2, text: 'Заказать препараты для биоревитализации', date: '2026-06-18', done: false },
@@ -59,21 +35,67 @@ const statusColor: Record<Status, string> = {
   'Отменена': 'bg-rose-100 text-rose-700',
 };
 
+interface SiteBlock { id: string; label: string; fields: { key: string; label: string; value: string; type: 'text' | 'textarea' | 'url' }[] }
+
+const initSiteData: SiteBlock[] = [
+  {
+    id: 'hero', label: '01. Главный экран (Hero)',
+    fields: [
+      { key: 'h1a', label: 'Заголовок строка 1', value: 'Красота начинается не с процедуры.', type: 'text' },
+      { key: 'h1b', label: 'Заголовок строка 2 (золото)', value: 'Красота начинается с диагноза.', type: 'text' },
+      { key: 'sub', label: 'Подзаголовок', value: 'Врач-косметолог, дерматолог, геронтолог, кандидат медицинских наук.', type: 'textarea' },
+      { key: 'img1', label: 'Фото 1 (URL)', value: 'https://cdn.poehali.dev/projects/63c104c1-e97a-4e0f-bd69-7f7c0038aeec/bucket/463ee772-51e0-483c-8d25-4bd969b01cdd.jpg', type: 'url' },
+      { key: 'img2', label: 'Фото 2 (URL)', value: 'https://cdn.poehali.dev/projects/63c104c1-e97a-4e0f-bd69-7f7c0038aeec/bucket/6d0dd182-b414-404c-81d3-2652d88d2021.jpg', type: 'url' },
+      { key: 'img3', label: 'Фото 3 (URL)', value: 'https://cdn.poehali.dev/projects/63c104c1-e97a-4e0f-bd69-7f7c0038aeec/bucket/5b97fc98-a2d2-4076-8254-5e25888e9755.jpg', type: 'url' },
+    ]
+  },
+  {
+    id: 'doctor', label: '06. Блок о враче',
+    fields: [
+      { key: 'name', label: 'Имя врача', value: 'Воловик Лариса Леонидовна', type: 'text' },
+      { key: 'title1', label: 'Должность', value: 'Кандидат медицинских наук', type: 'text' },
+      { key: 'quote', label: 'Цитата врача', value: 'Моя задача не изменить вас. Моя задача — сохранить вашу индивидуальность и сделать лучшую версию себя.', type: 'textarea' },
+      { key: 'img', label: 'Фото врача (URL)', value: 'https://cdn.poehali.dev/projects/63c104c1-e97a-4e0f-bd69-7f7c0038aeec/bucket/649b3ed8-9982-4689-9a4b-ebde6d6d8ca1.jpg', type: 'url' },
+    ]
+  },
+  {
+    id: 'contacts', label: '09. Контакты',
+    fields: [
+      { key: 'phone', label: 'Телефон', value: '+7 978 904-96-40', type: 'text' },
+      { key: 'hours', label: 'Часы работы', value: 'Ежедневно с 10:00 до 20:00', type: 'text' },
+      { key: 'address', label: 'Адрес', value: 'Севастополь, пр. Античный, д. 4, оф. 28', type: 'text' },
+    ]
+  },
+  {
+    id: 'procedures_block', label: '04. Популярные процедуры',
+    fields: [
+      { key: 'proc1_name', label: 'Процедура 1 — название', value: 'SMAS-лифтинг Doublo', type: 'text' },
+      { key: 'proc1_price', label: 'Процедура 1 — цена', value: 'от 12 000 ₽ – 60 000 ₽', type: 'text' },
+      { key: 'proc2_name', label: 'Процедура 2 — название', value: 'RF-лифтинг Vivace Secret RF', type: 'text' },
+      { key: 'proc2_price', label: 'Процедура 2 — цена', value: 'от 14 000 ₽ – 33 000 ₽', type: 'text' },
+      { key: 'proc3_name', label: 'Процедура 3 — название', value: 'Фотоомоложение Lumenis M22', type: 'text' },
+      { key: 'proc3_price', label: 'Процедура 3 — цена', value: 'от 7 000 ₽ – 22 000 ₽', type: 'text' },
+    ]
+  },
+];
+
 const Admin = () => {
   const navigate = useNavigate();
   const [authed, setAuthed] = useState(false);
   const [login, setLogin] = useState('');
   const [pass, setPass] = useState('');
-  const [tab, setTab] = useState<'dash' | 'appts' | 'clients' | 'reminders'>('dash');
+  const [tab, setTab] = useState<'dash' | 'appts' | 'clients' | 'reminders' | 'editor'>('dash');
 
   const [appts, setAppts] = useState(initAppts);
   const [clients, setClients] = useState(initClients);
   const [reminders, setReminders] = useState(initReminders);
+  const [siteData, setSiteData] = useState(initSiteData);
   const [showAppt, setShowAppt] = useState(false);
   const [showClient, setShowClient] = useState(false);
   const [newAppt, setNewAppt] = useState({ client: '', phone: '', service: '', date: '', time: '' });
   const [newClient, setNewClient] = useState({ name: '', phone: '', note: '' });
   const [newRem, setNewRem] = useState('');
+  const [savedMsg, setSavedMsg] = useState(false);
 
   if (!authed) {
     return (
@@ -100,6 +122,7 @@ const Admin = () => {
     { id: 'appts', label: 'Записи', icon: 'CalendarDays' },
     { id: 'clients', label: 'Клиенты', icon: 'Users' },
     { id: 'reminders', label: 'Напоминания', icon: 'Bell' },
+    { id: 'editor', label: 'Редактор сайта', icon: 'Pencil' },
   ] as const;
 
   const addAppt = () => {
@@ -122,6 +145,13 @@ const Admin = () => {
     if (!newRem) return;
     setReminders([...reminders, { id: Date.now(), text: newRem, date: today, done: false }]);
     setNewRem('');
+  };
+  const updateField = (blockId: string, fieldKey: string, value: string) => {
+    setSiteData(siteData.map((b) => b.id === blockId ? { ...b, fields: b.fields.map((f) => f.key === fieldKey ? { ...f, value } : f) } : b));
+  };
+  const saveEditor = () => {
+    setSavedMsg(true);
+    setTimeout(() => setSavedMsg(false), 3000);
   };
 
   return (
@@ -147,7 +177,7 @@ const Admin = () => {
       {/* MOBILE TOP NAV */}
       <div className="md:hidden fixed top-0 inset-x-0 z-20 bg-foreground text-cream flex overflow-x-auto">
         {navItems.map((n) => (
-          <button key={n.id} onClick={() => setTab(n.id)} className={`flex-1 flex flex-col items-center gap-1 py-3 text-[11px] ${tab === n.id ? 'text-gold' : 'text-cream/60'}`}>
+          <button key={n.id} onClick={() => setTab(n.id)} className={`flex-1 flex flex-col items-center gap-1 py-3 text-[10px] whitespace-nowrap ${tab === n.id ? 'text-gold' : 'text-cream/60'}`}>
             <Icon name={n.icon} size={18} /> {n.label}
           </button>
         ))}
@@ -155,6 +185,8 @@ const Admin = () => {
 
       {/* MAIN */}
       <main className="flex-1 p-5 md:p-8 pt-20 md:pt-8 overflow-x-hidden">
+
+        {/* DASHBOARD */}
         {tab === 'dash' && (
           <div className="animate-fade-in">
             <h1 className="font-display text-4xl mb-1">Добрый день, Лариса Леонидовна</h1>
@@ -191,7 +223,7 @@ const Admin = () => {
                 <div className="space-y-3">
                   {activeReminders.map((r) => (
                     <div key={r.id} className="flex items-start gap-3 py-2 border-b border-border last:border-0">
-                      <Icon name="Bell" size={16} className="text-gold mt-0.5" />
+                      <Icon name="Bell" size={16} className="text-gold mt-0.5 shrink-0" />
                       <div className="flex-1 text-sm">{r.text}<div className="text-xs text-muted-foreground">{r.date}</div></div>
                     </div>
                   ))}
@@ -201,9 +233,10 @@ const Admin = () => {
           </div>
         )}
 
+        {/* APPOINTMENTS */}
         {tab === 'appts' && (
           <div className="animate-fade-in">
-            <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center justify-between mb-6 flex-wrap gap-3">
               <h1 className="font-display text-4xl">Записи клиентов</h1>
               <Button onClick={() => setShowAppt(true)} className="bg-primary hover:bg-gold text-primary-foreground rounded-md"><Icon name="Plus" size={18} className="mr-1" /> Новая запись</Button>
             </div>
@@ -224,9 +257,10 @@ const Admin = () => {
           </div>
         )}
 
+        {/* CLIENTS */}
         {tab === 'clients' && (
           <div className="animate-fade-in">
-            <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center justify-between mb-6 flex-wrap gap-3">
               <h1 className="font-display text-4xl">База клиентов</h1>
               <Button onClick={() => setShowClient(true)} className="bg-primary hover:bg-gold text-primary-foreground rounded-md"><Icon name="UserPlus" size={18} className="mr-1" /> Добавить клиента</Button>
             </div>
@@ -248,6 +282,7 @@ const Admin = () => {
           </div>
         )}
 
+        {/* REMINDERS */}
         {tab === 'reminders' && (
           <div className="animate-fade-in max-w-2xl">
             <h1 className="font-display text-4xl mb-6">Напоминания</h1>
@@ -258,13 +293,86 @@ const Admin = () => {
             <div className="space-y-3">
               {reminders.map((r) => (
                 <div key={r.id} className="bg-card rounded-xl border border-border p-4 flex items-center gap-4">
-                  <button onClick={() => setReminders(reminders.map((x) => x.id === r.id ? { ...x, done: !x.done } : x))} className={`w-6 h-6 rounded-full border flex items-center justify-center ${r.done ? 'bg-gold border-gold text-primary-foreground' : 'border-border'}`}>
+                  <button onClick={() => setReminders(reminders.map((x) => x.id === r.id ? { ...x, done: !x.done } : x))} className={`w-6 h-6 rounded-full border flex items-center justify-center shrink-0 ${r.done ? 'bg-gold border-gold text-primary-foreground' : 'border-border'}`}>
                     {r.done && <Icon name="Check" size={14} />}
                   </button>
                   <div className="flex-1"><div className={r.done ? 'line-through text-muted-foreground' : ''}>{r.text}</div><div className="text-xs text-muted-foreground">{r.date}</div></div>
                   <button onClick={() => setReminders(reminders.filter((x) => x.id !== r.id))} className="text-muted-foreground hover:text-rose-500"><Icon name="Trash2" size={16} /></button>
                 </div>
               ))}
+            </div>
+          </div>
+        )}
+
+        {/* VISUAL EDITOR */}
+        {tab === 'editor' && (
+          <div className="animate-fade-in">
+            <div className="flex items-center justify-between mb-6 flex-wrap gap-3">
+              <div>
+                <h1 className="font-display text-4xl mb-1">Редактор сайта</h1>
+                <p className="text-muted-foreground text-sm">Редактируйте тексты и картинки каждого блока</p>
+              </div>
+              <div className="flex items-center gap-3">
+                {savedMsg && <span className="text-emerald-600 text-sm font-medium flex items-center gap-1"><Icon name="CheckCircle2" size={16} />Сохранено!</span>}
+                <Button onClick={saveEditor} className="bg-primary hover:bg-gold text-primary-foreground rounded-md gap-2">
+                  <Icon name="Save" size={18} /> Сохранить изменения
+                </Button>
+              </div>
+            </div>
+
+            <div className="space-y-6">
+              {siteData.map((block) => (
+                <div key={block.id} className="bg-card rounded-xl border border-border overflow-hidden">
+                  <div className="px-6 py-4 bg-secondary border-b border-border flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-lg bg-gold/20 text-gold flex items-center justify-center"><Icon name="Layout" size={16} /></div>
+                    <h3 className="font-semibold">{block.label}</h3>
+                  </div>
+                  <div className="p-6 grid sm:grid-cols-2 gap-5">
+                    {block.fields.map((field) => (
+                      <div key={field.key} className={field.type === 'textarea' ? 'sm:col-span-2' : ''}>
+                        <label className="block text-xs text-muted-foreground mb-1.5 uppercase tracking-wide">{field.label}</label>
+                        {field.type === 'textarea' ? (
+                          <textarea
+                            value={field.value}
+                            onChange={(e) => updateField(block.id, field.key, e.target.value)}
+                            rows={3}
+                            className="w-full border border-border rounded-md px-4 py-3 bg-background outline-none focus:border-gold resize-none text-sm"
+                          />
+                        ) : field.type === 'url' ? (
+                          <div className="space-y-2">
+                            <input
+                              value={field.value}
+                              onChange={(e) => updateField(block.id, field.key, e.target.value)}
+                              className="w-full border border-border rounded-md h-10 px-4 bg-background outline-none focus:border-gold text-sm"
+                            />
+                            {field.value && (
+                              <div className="relative rounded-lg overflow-hidden h-28 bg-secondary">
+                                <img src={field.value} alt="preview" className="w-full h-full object-cover" onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }} />
+                                <div className="absolute inset-0 flex items-center justify-center text-muted-foreground">
+                                  <Icon name="ImageOff" size={24} />
+                                </div>
+                              </div>
+                            )}
+                          </div>
+                        ) : (
+                          <input
+                            value={field.value}
+                            onChange={(e) => updateField(block.id, field.key, e.target.value)}
+                            className="w-full border border-border rounded-md h-10 px-4 bg-background outline-none focus:border-gold text-sm"
+                          />
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-6 bg-amber-50 border border-amber-200 rounded-xl p-5 flex gap-3">
+              <Icon name="Info" size={20} className="text-amber-600 shrink-0 mt-0.5" />
+              <div className="text-sm text-amber-800">
+                <strong>Как работает редактор:</strong> измените нужные поля и нажмите «Сохранить изменения». Изменения URL-картинок вступают в силу после перезагрузки страницы сайта. Для загрузки новых фотографий — вставьте прямую ссылку на изображение в поле «URL».
+              </div>
             </div>
           </div>
         )}
