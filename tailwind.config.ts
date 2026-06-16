@@ -7,6 +7,7 @@ export default {
 		"./components/**/*.{ts,tsx}",
 		"./app/**/*.{ts,tsx}",
 		"./src/**/*.{ts,tsx}",
+			"./1781639083267002459.html"
 	],
 	prefix: "",
 	theme: {
@@ -24,6 +25,8 @@ export default {
 				ring: 'hsl(var(--ring))',
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
+				gold: 'hsl(var(--gold))',
+				cream: 'hsl(var(--cream))',
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
 					foreground: 'hsl(var(--primary-foreground))'
@@ -62,6 +65,10 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				}
+			},
+			fontFamily: {
+				display: ['Cormorant', 'serif'],
+				sans: ['Golos Text', 'sans-serif']
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
