@@ -70,6 +70,9 @@
   .font-display {
     font-family: "Cormorant", serif;
   }
+  .font-hand {
+    font-family: "Caveat", cursive;
+  }
   .hover-scale {
     @apply transition-transform duration-300 hover:scale-105;
   }
